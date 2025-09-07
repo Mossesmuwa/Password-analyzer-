@@ -10,3 +10,9 @@ A Python tool that checks the strength of passwords using entropy, dictionary ch
 - Colorful **CLI interface** (using `rich`)
 
 ## 📂 Project Structure
+
+
+Run the analyzer
+python analyzer.py -p "MyP@ss123!"
+OR
+python analyzer.py
