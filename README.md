@@ -13,16 +13,16 @@ PassGuard checks passwords against a configurable common-password wordlist, dete
 
 ## Features
 
-| | |
-|---|---|
-| **Entropy scoring** | Shannon-entropy calculation over the actual character set used |
-| **Crack-time estimate** | Assumes 1 billion guesses per second (GPU-class attack) |
-| **Common-password detection** | Ships with 100 + common passwords; drop in any wordlist |
-| **Substitution detection** | Catches `P@ssw0rd`, `@dm1n`, etc. via configurable substitution map |
-| **8 security checks** | Length, case, digits, specials, not-common, no-substitution |
-| **Batch mode** | Analyze a file of passwords and get a ranked table |
-| **Clean API** | Import `analyze()` directly — no CLI required |
-| **Rich terminal UI** | Color-coded verdict, strength bar, metrics panel, check list |
+|                               |                                                                     |
+| ----------------------------- | ------------------------------------------------------------------- |
+| **Entropy scoring**           | Shannon-entropy calculation over the actual character set used      |
+| **Crack-time estimate**       | Assumes 1 billion guesses per second (GPU-class attack)             |
+| **Common-password detection** | Ships with 100 + common passwords; drop in any wordlist             |
+| **Substitution detection**    | Catches `P@ssw0rd`, `@dm1n`, etc. via configurable substitution map |
+| **8 security checks**         | Length, case, digits, specials, not-common, no-substitution         |
+| **Batch mode**                | Analyze a file of passwords and get a ranked table                  |
+| **Clean API**                 | Import `analyze()` directly — no CLI required                       |
+| **Rich terminal UI**          | Color-coded verdict, strength bar, metrics panel, check list        |
 
 ---
 
@@ -32,7 +32,7 @@ PassGuard checks passwords against a configurable common-password wordlist, dete
 
 ```bash
 # 1. Clone
-git clone https://github.com/your-username/passguard.git
+git clone https://github.com/mossesmuwa/passguard.git
 cd passguard
 
 # 2. Create virtual environment (recommended)
@@ -118,30 +118,30 @@ print(report.passed_checks)     # 8
 
 ### `PasswordReport` fields
 
-| Field | Type | Description |
-|---|---|---|
-| `password` | `str` | The analyzed password |
-| `entropy_bits` | `float` | Information-theoretic entropy |
-| `charset_size` | `int` | Size of the character set used |
-| `crack_time_str` | `str` | Human-readable crack-time estimate |
-| `is_common` | `bool` | Found in the common-passwords wordlist |
-| `substitution_of` | `str \| None` | Base word if leet-speak detected |
-| `checks` | `dict[str, bool]` | Individual security check results |
-| `strength` | `str` | Verdict label |
-| `score` | `int` | 0 (COMPROMISED) to 5 (FORTRESS) |
+| Field             | Type              | Description                            |
+| ----------------- | ----------------- | -------------------------------------- |
+| `password`        | `str`             | The analyzed password                  |
+| `entropy_bits`    | `float`           | Information-theoretic entropy          |
+| `charset_size`    | `int`             | Size of the character set used         |
+| `crack_time_str`  | `str`             | Human-readable crack-time estimate     |
+| `is_common`       | `bool`            | Found in the common-passwords wordlist |
+| `substitution_of` | `str \| None`     | Base word if leet-speak detected       |
+| `checks`          | `dict[str, bool]` | Individual security check results      |
+| `strength`        | `str`             | Verdict label                          |
+| `score`           | `int`             | 0 (COMPROMISED) to 5 (FORTRESS)        |
 
 ---
 
 ## Strength Scale
 
-| Score | Label | Entropy range |
-|---|---|---|
-| 0 | **COMPROMISED** | Common password or leet substitution |
-| 1 | **VERY WEAK** | < 30 bits |
-| 2 | **WEAK** | 30–49 bits |
-| 3 | **MODERATE** | 50–69 bits |
-| 4 | **STRONG** | 70–89 bits |
-| 5 | **FORTRESS** | ≥ 90 bits |
+| Score | Label           | Entropy range                        |
+| ----- | --------------- | ------------------------------------ |
+| 0     | **COMPROMISED** | Common password or leet substitution |
+| 1     | **VERY WEAK**   | < 30 bits                            |
+| 2     | **WEAK**        | 30–49 bits                           |
+| 3     | **MODERATE**    | 50–69 bits                           |
+| 4     | **STRONG**      | 70–89 bits                           |
+| 5     | **FORTRESS**    | ≥ 90 bits                            |
 
 > Crack time assumes a GPU-class attacker at **1 billion guesses per second**.
 
